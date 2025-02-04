@@ -86,7 +86,7 @@ public class LivroController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<LivroModel> addLivro(@RequestBody LivroModel livro) {
         LivroModel savedLivro = livroRepository.save(livro);
         return new ResponseEntity<LivroModel>(savedLivro, HttpStatus.CREATED);
@@ -118,5 +118,7 @@ public class LivroController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Retorna 404 caso não encontre o livro
         }
     }
+
+    
 
 }
