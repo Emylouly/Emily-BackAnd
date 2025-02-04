@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -83,5 +86,37 @@ public class LivroController {
         }
     }
 
+    @PostMapping
+    public ResponseEntity<LivroModel> addLivro(@RequestBody LivroModel livro) {
+        LivroModel savedLivro = livroRepository.save(livro);
+        return new ResponseEntity<LivroModel>(savedLivro, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<LivroModel> atualizarLivro(@PathVariable Long id, @RequestBody LivroModel livroAtualizado) {
+        Optional<LivroModel> livroExistente = livroRepository.findById(id);
+        
+        if (livroExistente.isPresent()) {
+            LivroModel livro = livroExistente.get();
+            
+            // Atualizando os campos do livro existente
+            livro.setTitulo(livroAtualizado.getTitulo());
+            livro.setAutor(livroAtualizado.getAutor());
+            livro.setEditora(livroAtualizado.getEditora());
+            livro.setAno_publicacao(livroAtualizado.getAno_publicacao());
+            livro.setGenero(livroAtualizado.getGenero());
+            livro.setIsbn(livroAtualizado.getIsbn());
+            livro.setNum_paginas(livroAtualizado.getNum_paginas());
+            livro.setSinopse(livroAtualizado.getSinopse());
+            livro.setIdioma(livroAtualizado.getIdioma());
+            livro.setPreco(livroAtualizado.getPreco());
+
+            // Salvando no banco de dados
+            LivroModel livroSalvo = livroRepository.save(livro);
+            return ResponseEntity.ok(livroSalvo);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Retorna 404 caso não encontre o livro
+        }
+    }
 
 }

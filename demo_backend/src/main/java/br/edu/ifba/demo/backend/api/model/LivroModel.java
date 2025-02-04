@@ -1,7 +1,6 @@
 package br.edu.ifba.demo.backend.api.model;
 
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -34,7 +33,7 @@ public class LivroModel {
     private String editora;
    
     @Column(name = "ano_publicacao", nullable = true)
-    private Date ano_publicacao;
+    private Integer ano_publicacao;
 
 
     @Column(name = "genero", nullable = true)
@@ -57,9 +56,8 @@ public class LivroModel {
     private String idioma;
 
 
-    @Column(name = "data_cadastro", nullable = true)
-    private LocalDateTime data_cadastro;
-
+    @Column(name = "data_cadastro", nullable = false)
+    private LocalDateTime data_cadastro = LocalDateTime.now();
 
     @Column(name = "preco", nullable = true)
     private Double preco;
@@ -69,12 +67,11 @@ public class LivroModel {
         super();
     }
 
-    public LivroModel(long id_livro, String titulo, String autor, String editora, Date ano_publicacao, 
+    public LivroModel(String titulo, String autor, String editora, Integer ano_publicacao, 
     String genero, String isbn, Integer num_paginas, String sinopse, String idioma,
     LocalDateTime data_cadastro, double preco){
 
         super();
-        this.id_livro = id_livro;
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
