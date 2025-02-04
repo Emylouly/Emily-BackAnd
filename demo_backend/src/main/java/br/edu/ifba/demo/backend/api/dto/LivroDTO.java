@@ -207,6 +207,3 @@ public class LivroDTO {
     }
 
 }
-
-
-
