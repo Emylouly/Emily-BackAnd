@@ -1,5 +1,6 @@
 package br.edu.ifba.demo.backend.api.dto;
 
+
 import br.edu.ifba.demo.backend.api.model.GeneroModel;
 import lombok.Data;
 

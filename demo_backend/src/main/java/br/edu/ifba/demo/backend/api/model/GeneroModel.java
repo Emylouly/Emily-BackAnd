@@ -45,6 +45,6 @@ public class GeneroModel {
         super();
         this.nome = nome;
         this.status = status;
-    }
-
+    } 
+   
 }
