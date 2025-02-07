@@ -106,7 +106,7 @@ public class LivroController {
     }
 
 
-    @PostMapping("/add")
+    @PostMapping("/salvar")
     public ResponseEntity<LivroModel> addLivro(@RequestBody LivroModel livro) {
         if (livro.getGenero() != null && livro.getGenero().getId_genero() != null) {
             Optional<GeneroModel> generoOpt = generoRepository.findById(livro.getGenero().getId_genero());
