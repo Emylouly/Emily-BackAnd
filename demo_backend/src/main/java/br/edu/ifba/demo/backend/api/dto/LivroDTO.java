@@ -1,21 +1,11 @@
 package br.edu.ifba.demo.backend.api.dto;
-
-
-
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifba.demo.backend.api.model.LivroModel;
 
-
-
-
 public class LivroDTO {
-
-
-
 
     private long id_livro;
     private String titulo;
@@ -30,13 +20,7 @@ public class LivroDTO {
     private LocalDateTime data_cadastro;
     private double preco;
 
-
-
-
     public static LivroDTO converter(LivroModel livroModel){
-
-
-
 
         var livro = new LivroDTO();
         livro.setId_livro(livroModel.getId_livro());
@@ -59,11 +43,7 @@ public class LivroDTO {
         livro.setPreco(livroModel.getPreco());
         return livro;
 
-
     }
-
-
-
 
     public static List<LivroDTO> converter(List<LivroModel> livro){
         List<LivroDTO> list = new ArrayList<>();
@@ -114,71 +94,41 @@ public class LivroDTO {
 
     }
 
-
-
-
     public long getId_livro() {
         return id_livro;
     }
-
-
-
 
     public void setId_livro(long id_livro) {
         this.id_livro = id_livro;
     }
 
-
-
-
     public String getTitulo() {
         return titulo;
     }
-
-
-
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-
-
-
     public String getAutor() {
         return autor;
     }
-
-
-
 
     public void setAutor(String autor) {
         this.autor = autor;
     }
 
-
-
-
     public String getEditora() {
         return editora;
     }
-
-
-
 
     public void setEditora(String editora) {
         this.editora = editora;
     }
 
-
-
-
-    public Integer getAno_publicacao() {
+  public Integer getAno_publicacao() {
         return ano_publicacao;
     }
-
-
-
 
     public void setAno_publicacao(Integer ano_publicacao) {
         this.ano_publicacao = ano_publicacao;

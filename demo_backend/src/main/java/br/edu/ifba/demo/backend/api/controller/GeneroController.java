@@ -74,7 +74,7 @@ public class GeneroController {
     }
 
 
-    @PostMapping("/add")
+    @PostMapping("/salvar")
     public ResponseEntity<GeneroModel> addGenero(@RequestBody GeneroModel genero){
         GeneroModel savedGenero = generoRepository.save(genero);
         return new ResponseEntity<GeneroModel>(savedGenero, HttpStatus.CREATED);
